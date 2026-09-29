@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A 75-question maternal and newborn health review test.">
-  <title>H&amp;H Test 1 Review</title>
+  <title>H&amp;H Test 1 Review Update</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d3b66'/%3E%3Cpath d='M18 33h9l4-12 7 25 5-13h7' fill='none' stroke='%23f4b942' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <style>
     :root{--ink:#102a43;--navy:#0d3b66;--blue:#16697a;--gold:#f4b942;--paper:#fbfdff;--line:#d7e2ea;--muted:#60798d;--good:#16794a;--bad:#b23434;--shadow:0 24px 70px rgba(13,59,102,.14)}
     *{box-sizing:border-box}
-    body{margin:0;min-height:100vh;background:linear-gradient(135deg,#e9f3f8 0%,#f8fbfd 52%,#eaf5f1 100%);color:var(--ink);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    body{margin:0;min-height:100vh;min-height:100dvh;background:linear-gradient(135deg,#e9f3f8 0%,#f8fbfd 52%,#eaf5f1 100%);color:var(--ink);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overscroll-behavior-y:none}
     button,input{font:inherit}
     .shell{width:min(1060px,calc(100% - 28px));margin:28px auto;display:grid;grid-template-columns:210px minmax(0,1fr);gap:22px;align-items:start}
     .rail{position:sticky;top:24px;background:var(--navy);color:white;border-radius:24px;padding:24px;box-shadow:var(--shadow)}
     .eyebrow{margin:0 0 8px;color:#9fd3dd;font-size:.77rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
-    .rail h1{font-size:1.35rem;line-height:1.18;margin:0 0 22px}
+    .rail h1{font-size:1.35rem;line-height:1.18;margin:0 0 7px}.round-label{margin:0;color:#b9dbe4;font-size:.82rem;font-weight:750}
     .score-box{border-top:1px solid rgba(255,255,255,.22);padding-top:18px;margin-top:18px}
     .stat{display:flex;justify-content:space-between;gap:10px;margin:8px 0;color:#dbeaf1}.stat strong{color:white}
     .progress-track{height:8px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden;margin-top:18px}.progress-bar{height:100%;width:1.333%;background:var(--gold);transition:width .3s ease}
@@ -32,10 +32,10 @@
     .option.wrong{border-color:var(--bad);background:#fff1f1}.option.wrong .letter{background:var(--bad);color:white}
     .option[disabled]{cursor:default;transform:none}
     .feedback{display:none;margin:22px 0 0;padding:16px 18px;border-radius:14px;font-weight:700}.feedback.show{display:block}.feedback.good{color:#0f623c;background:#e8f7ef}.feedback.bad{color:#8c2525;background:#fdecec}
-    .actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:26px}.hint{color:var(--muted);font-size:.9rem}.primary{border:0;border-radius:14px;padding:13px 22px;background:var(--navy);color:white;font-weight:850;cursor:pointer;box-shadow:0 8px 18px rgba(13,59,102,.18)}.primary:hover{background:#15527f}.primary:disabled{opacity:.42;cursor:not-allowed;box-shadow:none}
-    .results{display:none;padding:44px 36px}.results.show{display:block}.results h2{font:700 clamp(2rem,4vw,3rem)/1.1 Georgia,serif;margin:0 0 12px}.big-score{font-size:4.6rem;line-height:1;font-weight:900;color:var(--navy);margin:22px 0 8px}.result-note{color:var(--muted);max-width:56ch}.review{margin:28px 0;display:grid;gap:10px}.review-item{padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:white}.review-item strong{color:var(--navy)}
+    .actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:26px}.hint{color:var(--muted);font-size:.9rem}.primary,.secondary{min-height:48px;border-radius:14px;padding:13px 22px;font-weight:850;cursor:pointer}.primary{border:0;background:var(--navy);color:white;box-shadow:0 8px 18px rgba(13,59,102,.18)}.primary:hover{background:#15527f}.primary:disabled{opacity:.42;cursor:not-allowed;box-shadow:none}.secondary{border:1.5px solid var(--navy);background:white;color:var(--navy)}.secondary:hover{background:#eef5f8}
+    .results{display:none;padding:44px 36px}.results.show{display:block}.results h2{font:700 clamp(2rem,4vw,3rem)/1.1 Georgia,serif;margin:0 0 12px}.big-score{font-size:4.6rem;line-height:1;font-weight:900;color:var(--navy);margin:22px 0 8px}.result-note{color:var(--muted);max-width:56ch}.review{margin:28px 0;display:grid;gap:10px}.review-item{padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:white}.review-item strong{color:var(--navy)}.result-actions{display:flex;flex-wrap:wrap;gap:12px}
     .foot{margin:18px 2px 0;color:#667d8d;font-size:.82rem;text-align:center}
-    @media(max-width:760px){.shell{grid-template-columns:1fr;margin:14px auto}.rail{position:static;border-radius:20px;padding:18px 20px}.rail h1{margin-bottom:12px}.score-box{display:grid;grid-template-columns:1fr 1fr;gap:8px 22px;margin-top:12px;padding-top:12px}.progress-track{grid-column:1/-1}.content{padding:26px 20px}.card-top{padding:18px 20px}.hint{display:none}.actions{justify-content:flex-end}.option{padding:13px}.results{padding:32px 22px}}
+    @media(max-width:760px){body{background:var(--paper)}.shell{width:100%;min-height:100dvh;grid-template-columns:1fr;gap:0;margin:0}.rail{position:sticky;top:0;z-index:10;border-radius:0;padding:12px 16px 10px;box-shadow:0 8px 24px rgba(13,59,102,.18);display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"title stats" "round stats";align-items:center;gap:3px 16px}.eyebrow{display:none}.rail h1{grid-area:title;font-size:1rem;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.round-label{grid-area:round;font-size:.72rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.score-box{grid-area:stats;border:0;margin:0;padding:0;display:grid;grid-template-columns:auto auto;gap:2px 14px}.stat{display:grid;gap:0;margin:0;text-align:right;font-size:.74rem;line-height:1.25}.stat strong{font-size:.9rem}.progress-track{grid-column:1/-1;height:5px;margin:5px 0 0}.card{min-height:calc(100dvh - 70px);border:0;border-radius:0;box-shadow:none}.card-top{padding:14px 16px}.category{font-size:.8rem}.counter{font-size:.82rem}.content{padding:22px 16px 92px}.question{font-size:clamp(1.35rem,6.2vw,1.8rem);margin-bottom:20px}.answers{gap:10px}.option{min-height:60px;padding:12px 14px;border-radius:14px;grid-template-columns:40px 1fr;gap:10px;font-size:1rem;line-height:1.35}.letter{width:38px;height:38px}.feedback{margin-top:16px}.hint{display:none}.actions{position:sticky;bottom:0;z-index:8;justify-content:stretch;margin:22px -16px -92px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(251,253,255,.96);border-top:1px solid var(--line);backdrop-filter:blur(10px)}.actions .primary{width:100%;min-height:52px}.results{min-height:calc(100dvh - 70px);padding:30px 20px calc(28px + env(safe-area-inset-bottom))}.big-score{font-size:3.7rem}.result-actions{display:grid}.result-actions button{width:100%}.foot{display:none}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
   </style>
 </head>
@@ -44,6 +44,7 @@
     <aside class="rail" aria-label="Test progress">
       <p class="eyebrow">Maternal &amp; newborn health</p>
       <h1>H&amp;H Test 1 Review</h1>
+      <p class="round-label" id="roundLabel">Full review</p>
       <div class="score-box">
         <div class="stat"><span>Answered</span><strong id="answered">0 / 75</strong></div>
         <div class="stat"><span>Correct</span><strong id="correct">0</strong></div>
@@ -67,8 +68,11 @@
         <h2>Your result</h2>
         <div class="big-score" id="finalScore"></div>
         <p class="result-note" id="resultNote"></p>
+        <div class="result-actions">
+          <button class="primary" id="retest">Retest incorrect answers</button>
+          <button class="secondary" id="restart">Restart full test, shuffled</button>
+        </div>
         <div class="review" id="review"></div>
-        <button class="primary" id="restart">Restart test</button>
       </article>
       <p class="foot">Answer key follows the supplied PowerPoint’s speaker notes. Question 34 has no answer in its notes and uses “Moro reflex.”</p>
     </section>
@@ -154,15 +158,21 @@
     q("Pregnancy signs","Which symptom is classified as a presumptive sign of pregnancy?",["Chadwick’s sign","Nausea","Uterine enlargement","Goodell’s sign"],1)
   ];
 
-  let index=0,selected=null,checked=false,score=0;
+  const masterQuestions=questions.map((item,originalIndex)=>({...item,originalIndex}));
+  let activeQuestions=[...masterQuestions],index=0,selected=null,checked=false,score=0,lastMissed=[];
   const responses=[];
   const $=id=>document.getElementById(id);
   const letters=["A","B","C","D"];
+  const shuffle=items=>{const copy=[...items];for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]]}return copy};
 
+  function updateStats(){
+    $("answered").textContent=`${responses.length} / ${activeQuestions.length}`;
+    $("correct").textContent=score;
+  }
   function render(){
-    const item=questions[index]; selected=null; checked=false;
+    const item=activeQuestions[index]; selected=null; checked=false;
     $("category").textContent=item.category;
-    $("counter").textContent=`Question ${index+1} of ${questions.length}`;
+    $("counter").textContent=`Question ${index+1} of ${activeQuestions.length}`;
     $("question").textContent=item.question;
     $("answers").replaceChildren(...item.answers.map((answer,i)=>{
       const b=document.createElement("button"); b.type="button"; b.className="option"; b.dataset.index=i;
@@ -171,7 +181,7 @@
     }));
     $("feedback").className="feedback"; $("feedback").textContent="";
     $("action").textContent="Check answer"; $("action").disabled=true;
-    $("progress").style.width=`${((index+1)/questions.length)*100}%`;
+    $("progress").style.width=`${((index+1)/activeQuestions.length)*100}%`;
   }
   function choose(i){
     if(checked)return; selected=i;
@@ -179,33 +189,40 @@
     $("action").disabled=false;
   }
   function check(){
-    if(selected===null)return; checked=true; const item=questions[index]; const isRight=selected===item.correct;
+    if(selected===null)return; checked=true; const item=activeQuestions[index]; const isRight=selected===item.correct;
     if(isRight)score++;
-    responses.push({question:index,chosen:selected,correct:item.correct});
+    responses.push({item,chosen:selected,correct:item.correct});
     document.querySelectorAll(".option").forEach((el,n)=>{el.disabled=true;el.classList.remove("selected");if(n===item.correct)el.classList.add("correct");if(n===selected&&!isRight)el.classList.add("wrong")});
     $("feedback").textContent=isRight?"Correct.":`Not quite. The correct answer is ${letters[item.correct]}: ${item.answers[item.correct]}.`;
     $("feedback").className=`feedback show ${isRight?"good":"bad"}`;
-    $("action").textContent=index===questions.length-1?"See results":"Next question";
-    $("answered").textContent=`${responses.length} / ${questions.length}`; $("correct").textContent=score;
+    $("action").textContent=index===activeQuestions.length-1?"See results":"Next question";
+    updateStats();
   }
-  function advance(){if(!checked){check();return} if(index<questions.length-1){index++;render();window.scrollTo({top:0,behavior:"smooth"})}else finish()}
+  function advance(){if(!checked){check();return}if(index<activeQuestions.length-1){index++;render();window.scrollTo({top:0,behavior:"smooth"})}else finish()}
   function finish(){
-    $("quizCard").style.display="none"; $("results").classList.add("show"); const pct=Math.round(score/questions.length*100);
-    $("finalScore").textContent=`${score} / ${questions.length}`;
-    $("resultNote").textContent=`You scored ${pct}%. ${pct>=80?"Strong review result. Revisit any missed items below.":"Review the missed items below, then restart when you are ready."}`;
-    const missed=responses.filter(r=>r.chosen!==r.correct);
-    $("review").replaceChildren(...(missed.length?missed.map(r=>{const item=questions[r.question],d=document.createElement("div");d.className="review-item";d.innerHTML=`<strong>${r.question+1}. ${item.question}</strong><br>Correct: ${letters[r.correct]}. ${item.answers[r.correct]}`;return d}):[Object.assign(document.createElement("div"),{className:"review-item",textContent:"Perfect score. No missed questions to review."})]));
+    $("quizCard").style.display="none"; $("results").classList.add("show"); const pct=Math.round(score/activeQuestions.length*100);
+    $("finalScore").textContent=`${score} / ${activeQuestions.length}`;
+    lastMissed=responses.filter(r=>r.chosen!==r.correct).map(r=>r.item);
+    $("resultNote").textContent=lastMissed.length?`You scored ${pct}%. Retest only the ${lastMissed.length} question${lastMissed.length===1?"":"s"} you missed, or restart the full test in a new random order.`:`You scored ${pct}%. You answered every question correctly.`;
+    $("retest").hidden=lastMissed.length===0;
+    const missedResponses=responses.filter(r=>r.chosen!==r.correct);
+    $("review").replaceChildren(...(missedResponses.length?missedResponses.map(r=>{const item=r.item,d=document.createElement("div");d.className="review-item";d.innerHTML=`<strong>Original question ${item.originalIndex+1}: ${item.question}</strong><br>Correct: ${letters[r.correct]}. ${item.answers[r.correct]}`;return d}):[Object.assign(document.createElement("div"),{className:"review-item",textContent:"Perfect score. No missed questions to review."})]));
     window.scrollTo({top:0,behavior:"smooth"});
   }
-  function restart(){index=0;selected=null;checked=false;score=0;responses.length=0;$("answered").textContent=`0 / ${questions.length}`;$("correct").textContent="0";$("results").classList.remove("show");$("quizCard").style.display="block";render()}
-  $("action").addEventListener("click",advance); $("restart").addEventListener("click",restart);
+  function startRound(items,{mix=false,label="Full review"}={}){
+    activeQuestions=mix?shuffle(items):[...items];index=0;selected=null;checked=false;score=0;responses.length=0;
+    $("roundLabel").textContent=label;$("results").classList.remove("show");$("quizCard").style.display="block";updateStats();render();window.scrollTo({top:0,behavior:"smooth"});
+  }
+  function restart(){startRound(masterQuestions,{mix:true,label:"Shuffled full review"})}
+  function retest(){if(lastMissed.length)startRound(lastMissed,{mix:true,label:"Incorrect answers retest"})}
+  $("action").addEventListener("click",advance);$("restart").addEventListener("click",restart);$("retest").addEventListener("click",retest);
   document.addEventListener("keydown",e=>{if($("quizCard").style.display==="none")return;if(!checked&&["1","2","3","4"].includes(e.key))choose(Number(e.key)-1);if(e.key==="Enter"&&!$("action").disabled)advance()});
 
   if(document.modelContext?.registerTool){
     const valid=n=>Number.isInteger(n)&&n>=1&&n<=4;
-    Promise.resolve(document.modelContext.registerTool({name:"answer_current_question",title:"Answer current question",description:"Select answer 1 through 4 for the visible question and check it.",inputSchema:{type:"object",properties:{answer:{type:"integer",minimum:1,maximum:4}},required:["answer"],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute({answer}){if(checked)throw new Error("The current question has already been checked.");if(!valid(answer))throw new Error("Answer must be an integer from 1 to 4.");choose(answer-1);check();return{question:index+1,correct:selected===questions[index].correct,score};}})).catch(()=>{});
+    Promise.resolve(document.modelContext.registerTool({name:"answer_current_question",title:"Answer current question",description:"Select answer 1 through 4 for the visible question and check it.",inputSchema:{type:"object",properties:{answer:{type:"integer",minimum:1,maximum:4}},required:["answer"],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute({answer}){if(checked)throw new Error("The current question has already been checked.");if(!valid(answer))throw new Error("Answer must be an integer from 1 to 4.");choose(answer-1);check();return{question:index+1,correct:selected===activeQuestions[index].correct,score};}})).catch(()=>{});
   }
-  render();
+  startRound(masterQuestions);
   </script>
 </body>
 </html>
