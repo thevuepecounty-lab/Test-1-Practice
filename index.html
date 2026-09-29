@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A 75-question maternal and newborn health review test.">
+  <title>H&amp;H Test 1 Review</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d3b66'/%3E%3Cpath d='M18 33h9l4-12 7 25 5-13h7' fill='none' stroke='%23f4b942' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    :root{--ink:#102a43;--navy:#0d3b66;--blue:#16697a;--gold:#f4b942;--paper:#fbfdff;--line:#d7e2ea;--muted:#60798d;--good:#16794a;--bad:#b23434;--shadow:0 24px 70px rgba(13,59,102,.14)}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:linear-gradient(135deg,#e9f3f8 0%,#f8fbfd 52%,#eaf5f1 100%);color:var(--ink);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    button,input{font:inherit}
+    .shell{width:min(1060px,calc(100% - 28px));margin:28px auto;display:grid;grid-template-columns:210px minmax(0,1fr);gap:22px;align-items:start}
+    .rail{position:sticky;top:24px;background:var(--navy);color:white;border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+    .eyebrow{margin:0 0 8px;color:#9fd3dd;font-size:.77rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .rail h1{font-size:1.35rem;line-height:1.18;margin:0 0 22px}
+    .score-box{border-top:1px solid rgba(255,255,255,.22);padding-top:18px;margin-top:18px}
+    .stat{display:flex;justify-content:space-between;gap:10px;margin:8px 0;color:#dbeaf1}.stat strong{color:white}
+    .progress-track{height:8px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden;margin-top:18px}.progress-bar{height:100%;width:1.333%;background:var(--gold);transition:width .3s ease}
+    .card{background:rgba(255,255,255,.93);border:1px solid rgba(255,255,255,.9);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
+    .card-top{padding:22px 28px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:14px}
+    .category{margin:0;color:var(--blue);font-weight:800;font-size:.9rem}.counter{color:var(--muted);font-weight:700;white-space:nowrap}
+    .content{padding:34px 36px 30px}
+    .question{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.45rem,3vw,2.15rem);line-height:1.25;margin:0 0 28px;letter-spacing:-.015em}
+    .answers{display:grid;gap:12px;border:0;padding:0;margin:0}
+    .option{display:grid;grid-template-columns:40px 1fr;gap:13px;align-items:center;width:100%;text-align:left;padding:15px 17px;border:1.5px solid var(--line);border-radius:16px;background:white;color:var(--ink);cursor:pointer;transition:.16s ease}
+    .option:hover{border-color:#7fb2c2;transform:translateY(-1px)}.option:focus-visible{outline:4px solid rgba(244,185,66,.45);outline-offset:2px}
+    .letter{width:36px;height:36px;border-radius:11px;background:#eef5f8;display:grid;place-items:center;font-weight:900;color:var(--navy)}
+    .option.selected{border-color:var(--blue);background:#eef8fa}.option.selected .letter{background:var(--blue);color:white}
+    .option.correct{border-color:var(--good);background:#eef9f3}.option.correct .letter{background:var(--good);color:white}
+    .option.wrong{border-color:var(--bad);background:#fff1f1}.option.wrong .letter{background:var(--bad);color:white}
+    .option[disabled]{cursor:default;transform:none}
+    .feedback{display:none;margin:22px 0 0;padding:16px 18px;border-radius:14px;font-weight:700}.feedback.show{display:block}.feedback.good{color:#0f623c;background:#e8f7ef}.feedback.bad{color:#8c2525;background:#fdecec}
+    .actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:26px}.hint{color:var(--muted);font-size:.9rem}.primary{border:0;border-radius:14px;padding:13px 22px;background:var(--navy);color:white;font-weight:850;cursor:pointer;box-shadow:0 8px 18px rgba(13,59,102,.18)}.primary:hover{background:#15527f}.primary:disabled{opacity:.42;cursor:not-allowed;box-shadow:none}
+    .results{display:none;padding:44px 36px}.results.show{display:block}.results h2{font:700 clamp(2rem,4vw,3rem)/1.1 Georgia,serif;margin:0 0 12px}.big-score{font-size:4.6rem;line-height:1;font-weight:900;color:var(--navy);margin:22px 0 8px}.result-note{color:var(--muted);max-width:56ch}.review{margin:28px 0;display:grid;gap:10px}.review-item{padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:white}.review-item strong{color:var(--navy)}
+    .foot{margin:18px 2px 0;color:#667d8d;font-size:.82rem;text-align:center}
+    @media(max-width:760px){.shell{grid-template-columns:1fr;margin:14px auto}.rail{position:static;border-radius:20px;padding:18px 20px}.rail h1{margin-bottom:12px}.score-box{display:grid;grid-template-columns:1fr 1fr;gap:8px 22px;margin-top:12px;padding-top:12px}.progress-track{grid-column:1/-1}.content{padding:26px 20px}.card-top{padding:18px 20px}.hint{display:none}.actions{justify-content:flex-end}.option{padding:13px}.results{padding:32px 22px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <aside class="rail" aria-label="Test progress">
+      <p class="eyebrow">Maternal &amp; newborn health</p>
+      <h1>H&amp;H Test 1 Review</h1>
+      <div class="score-box">
+        <div class="stat"><span>Answered</span><strong id="answered">0 / 75</strong></div>
+        <div class="stat"><span>Correct</span><strong id="correct">0</strong></div>
+        <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress"></div></div>
+      </div>
+    </aside>
+
+    <section>
+      <article class="card" id="quizCard">
+        <header class="card-top"><p class="category" id="category"></p><span class="counter" id="counter"></span></header>
+        <div class="content">
+          <h2 class="question" id="question"></h2>
+          <fieldset class="answers" id="answers" aria-label="Answer choices"></fieldset>
+          <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+          <div class="actions"><span class="hint">Keys 1–4 select an answer. Enter checks or continues.</span><button class="primary" id="action" disabled>Check answer</button></div>
+        </div>
+      </article>
+
+      <article class="card results" id="results" aria-live="polite">
+        <p class="eyebrow" style="color:var(--blue)">Review complete</p>
+        <h2>Your result</h2>
+        <div class="big-score" id="finalScore"></div>
+        <p class="result-note" id="resultNote"></p>
+        <div class="review" id="review"></div>
+        <button class="primary" id="restart">Restart test</button>
+      </article>
+      <p class="foot">Study review based on the supplied PowerPoint. Confirm course-specific scope-of-practice items with your instructor.</p>
+    </section>
+  </main>
+
+  <script>
+  const q=(category,question,answers,correct)=>({category,question,answers,correct});
+  const questions=[
+    q("Newborn assessment","Apgar scores measure the infant’s…",["Gestational age","Weight and height","Response to extrauterine life","Length of periods of reactivity"],2),
+    q("Newborn assessment","In response to eliciting the Moro reflex, the infant should…",["Extend, then abduct the extremities","Flex the arm and leg of the opposite side","Use the tongue to push a foreign object out of the mouth","Turn the mouth toward the cheek that is stroked"],0),
+    q("Newborn assessment","Transitional stool begins on the second or third day of life and is…",["A thick, black stool","A clay-coloured stool","A watery yellow stool with sediment throughout","A green or yellowish stool with a sometimes seedy appearance"],3),
+    q("Newborn assessment","Hydrocele is…",["A collection of fluid around the testes in the scrotum","A mucousy and possibly blood-tinged vaginal discharge","Edema of the genital area following birth, especially in breech birth","A urethral meatus on the dorsal surface of the penis"],0),
+    q("Newborn assessment","A newborn has a heart rate of 150 bpm, a strong cry, well-flexed muscle tone, a pink body with blue hands and feet, and grimaces when suctioned. What is the APGAR score?",["7","8","9","10"],1),
+    q("Newborn assessment","A newborn has swelling over the right parietal area. The nurse suspects cephalohematoma. What is the most likely cause?",["Birth trauma","Infection","Dehydration","Hemorrhage"],0),
+    q("Newborn assessment","A newborn has diffuse scalp edema that crosses the suture lines. The nurse recognizes caput succedaneum. What should the nurse do next?",["Notify the physician immediately","Document the finding and monitor for resolution","Apply ice packs to reduce swelling","Perform a neurological assessment"],1),
+    q("Newborn assessment","Which finding in a newborn’s oral cavity is a normal variation?",["Epstein’s pearls on the gums or palate","Thrush on the tongue or gums","Petechiae on the hard palate","Yellowing of the hard palate"],0),
+    q("Newborn assessment","What is the normal range for a newborn’s heart rate?",["60 to 80 bpm","80 to 100 bpm","100 to 120 bpm","120 to 160 bpm"],3),
+    q("Newborn assessment","An infant has a cephalohematoma on the left side of the skull. Which intervention should the nurse implement?",["Monitor for signs of jaundice","Apply a pressure dressing over the area","Administer antibiotics as prescribed","Elevate the head of the bed"],0),
+    q("Postpartum care","The nurse begins postpartum teaching with a mother who has given birth to her first child. Which aspect of teaching is most important?",["Determine whether father-infant attachment is taking place","Help the mother identify the baby’s behavioural cues","Discuss her parents’ adaptation to grandparenthood","Describe likely sibling reactions to the new baby"],1),
+    q("Newborn assessment","Which reflex produces movement of the tongue, mouth, or head toward a stimulus?",["Galant reflex","Suck-swallow reflex","Rooting reflex","Moro reflex"],2),
+    q("Newborn care","What should the nurse encourage during the first period of reactivity?",["Weigh the baby","Put the baby to breast","Bathe the baby","Check blood glucose"],1),
+    q("Postpartum care","Which action is considered an advanced practice skill in the course context?",["Cutting the cord","Checking the fundus","Massaging the fundus","Taking vital signs"],2),
+    q("Postpartum care","What should a nurse tell a mother to do if the fundus is deviated to the right?",["Pump her legs","Breastfeed","Eat","Void"],3),
+    q("Postpartum care","Mrs. Happy is four hours postpartum and is concerned about her own care. Which stage is she in?",["Taking-in","Taking-hold","Letting-go","Containment"],0),
+    q("Family adaptation","Attachment to a newborn is frequently termed…",["Negotiation","Bonding","Concern","Fortitude"],1),
+    q("Postpartum care","The process of the uterus returning to its pre-pregnancy size is termed…",["Atrophy","Retrographic change","Involution","Endometrial discharge"],2),
+    q("Postpartum care","What effect does breastfeeding have on uterine size?",["It slows involution by three to four days","It decreases body fluid and therefore lochia flow","It aids uterine contraction through oxytocin release","It causes cervical dryness through estrogen"],2),
+    q("Postpartum care","On postpartum day 1, uterine discharge should be…",["Pink with occasional red streaking","White because of mucus infiltration","Brown because the blood is old","Red with occasional small clots"],3),
+    q("Postpartum care","On postpartum day 1, assessment of uterine size should indicate the fundus is…",["1 cm under the rib cage","3 cm below the umbilicus","1 cm below the umbilicus","3 cm above the symphysis pubis"],2),
+    q("Pregnancy changes","At what week is an embryo termed a fetus?",["4 weeks","9 weeks","6 weeks","12 weeks"],1),
+    q("Pregnancy health","What does folic acid help prevent?",["Down syndrome","Multiple sclerosis","Hepatitis","Neural tube defects"],3),
+    q("Pregnancy signs","Which is a positive sign of pregnancy?",["An impalpable fundus","A missed period","A fetal heartbeat","Sore breasts"],2),
+    q("Pregnancy signs","What is Goodell’s sign?",["Softening of the cervix","Bluish or purple discoloration of the vulva, vagina, and cervix","Thickening of the cervix","Postpartum depression"],0),
+    q("Pregnancy risk","At what age is a pregnant person considered at higher risk?",["35 years","40 years","45 years","30 years"],0),
+    q("Pregnancy complications","What is a risk of hyperemesis gravidarum?",["Heartburn","Dehydration","Fatigue","High blood pressure"],1),
+    q("Pregnancy complications","When the placenta covers the entire cervical os, it is called…",["Total placenta previa","Partial placenta previa","Marginal placenta previa","Low-lying placenta previa"],0),
+    q("Pregnancy complications","By what postpartum point does gestational diabetes typically resolve?",["It never resolves","8 weeks","20 weeks","6 weeks"],3),
+    q("Postpartum care","A day-1 postpartum patient has red lochia with a foul odour. What does this finding indicate?",["A normal finding","Possible infection","A need for more oral fluids","A need for more ambulation"],1),
+    q("Newborn assessment","What physiological condition is indicated by acrocyanosis in newborns?",["Sluggish peripheral circulation","Enhanced peripheral circulation","Normal thermoregulation","Overactive sweat glands"],0),
+    q("Newborn care","What is the recommended response when a newborn’s temperature is abnormal?",["Reassess only after feeding","Use a rectal thermometer","Provide skin-to-skin contact, then reassess","Monitor for 30 minutes without action"],2),
+    q("Newborn assessment","What are the components of the Apgar score?",["Colour, gestational age, heart rate, and breastfeeding success","Heart rate, temperature, muscle tone, reflexes, and colour","Muscle tone, skin-to-skin contact, weight, and head circumference","Heart rate, respiratory effort, muscle tone, reflexes, and colour"],3),
+    q("Newborn assessment","Which reflex typically disappears within four to six months after birth?",["Moro reflex","Palmar grasp reflex","Rooting reflex","Stepping reflex"],0),
+    q("Newborn adaptation","During which period after birth is the newborn most alert and responsive?",["Period of decreased responsiveness, 1 to 3 hours","First period of reactivity, 30 to 60 minutes","Second period of reactivity, 3 to 8 hours","First 6 to 8 hours"],1),
+    q("Newborn thermoregulation","How can a newborn lose heat through conduction?",["By touching a cold surface","By being exposed to cold air","By wet skin coming into contact with air","By being wrapped in a thick blanket"],0),
+    q("Newborn thermoregulation","What is non-shivering thermogenesis in newborns primarily due to?",["Increased body surface area","External heat sources","Voluntary muscle contractions","Metabolism of brown fat"],3),
+    q("Newborn thermoregulation","What complication can hypothermia in newborns lead to?",["Increased appetite","Hypoglycemia","Dehydration","Fever"],1),
+    q("Postpartum care","Which dietary practice should be considered in postpartum care?",["Promoting a vegetarian diet for all women","Recommending a low-fat diet regardless of preference","Encouraging high-sugar foods for energy","Recognizing that some cultures follow specific diets"],3),
+    q("Postpartum adaptation","What is the primary characteristic of Rubin’s ‘taking-in’ phase?",["The mother becomes critical of her parenting abilities","The mother begins to create her personal parent role","The mother allows others to help her","The mother experiences conflicting emotions of joy and sadness"],2),
+    q("Postpartum adaptation","What should a person do if postpartum blues last longer than two weeks?",["Increase physical activity","Seek professional help","Wait and observe for improvement","No treatment is necessary"],1),
+    q("Family adaptation","What must be considered when siblings are introduced to a new baby?",["They will not show behavioural changes","Their reaction may vary with age","They should be excluded from the process","They will always be excited"],1),
+    q("Inclusive care","What is a key consideration when addressing the postpartum needs of LGBTQ2+ families?",["Discourage open discussion of concerns","Provide tailored resources and support that recognize unique challenges","Expect conformity to traditional family structures","Assume all families have equal access to community resources"],1),
+    q("Pregnancy changes","What is a primary physical change during the first trimester?",["Enhanced physical activity","Increased hormone levels that can intensify emotions","Preparation for labour","Visible fetal growth"],1),
+    q("Pregnancy danger signs","Which danger sign of pregnancy should be reported immediately?",["Mild headaches","Increased vaginal discharge","Nausea and vomiting","A sudden gush of fluid from the vagina"],3),
+    q("Pregnancy adaptation","What psychological impact might an adolescent experience because of pregnancy?",["Increased confidence in parenting skills","Increased peer support","Feelings of shame, guilt, and fear","Enhanced relationship stability"],2),
+    q("Fetal development","Which stage occurs first in prenatal development?",["Fetal stage","Embryonic stage","Zygote stage","Blastocyst stage"],2),
+    q("Fetal development","Fraternal twins result from…",["One sperm splitting and fertilizing two ova","Two separate ova fertilized by two sperm","One ovum fertilized by two sperm","Two sperm fertilizing one ovum"],1),
+    q("Fetal development","What is the primary hormone produced by the blastocyst during implantation?",["Follicle-stimulating hormone, FSH","Progesterone","Estrogen","Human chorionic gonadotropin, hCG"],3),
+    q("Fetal development","Which is NOT one of the three germ layers that develop during the embryonic stage?",["Endoderm","Mesoderm","Neuroderm","Ectoderm"],2),
+    q("Fetal development","What is one of the four main functions of amniotic fluid?",["Act as a barrier to infection","Provide oxygen to the fetus","Produce hormones","Facilitate maternal blood exchange"],0),
+    q("Fetal development","When does the embryo transition to the fetal stage?",["At 8 weeks after fertilization","At fertilization","At 2 weeks after fertilization","At the start of labour"],0),
+    q("Fetal development","What surrounds the blood vessels in the umbilical cord?",["Wharton’s jelly","Amniotic fluid","Placental tissue","Chorionic membrane"],0),
+    q("Fetal development","What is the primary role of the ectoderm during embryonic development?",["Forming the digestive tract","Developing the respiratory system","Creating the skeletal system","Developing external structures such as skin and hair"],3),
+    q("Pregnancy complications","Which condition describes an excess of amniotic fluid?",["Oligohydramnios","Polyhydramnios","Amniotic saturation","Hydramnios deficiency"],1),
+    q("Fetal development","Which best describes development during the embryonic stage?",["Development of major limb structures only","Formation of organs and differentiation of germ layers","Growth in size without differentiation","Direct transition to fetal development without changes"],1),
+    q("Prenatal assessment","Which is NOT one of the five areas evaluated in a biophysical profile?",["Amount of amniotic fluid","Fetal body weight","Fetal muscle tone","Fetal heart rate"],1),
+    q("Pregnancy complications","What is a common symptom of hyperemesis gravidarum?",["Persistent abdominal pain","Sudden vaginal bleeding","Swelling of the fingers","Excessive nausea and vomiting"],3),
+    q("Pregnancy danger signs","Which warning sign should be reported immediately?",["Vision changes","Occasional headaches","Mild backache","Infrequent nausea"],0),
+    q("Pregnancy complications","With an ectopic pregnancy, which symptom most strongly suggests rupture?",["Light vaginal bleeding","Sudden severe lower abdominal pain","Spotting with a missed period","Mild lower abdominal pain"],1),
+    q("Prenatal assessment","What does an alpha-fetoprotein, AFP, test help screen for?",["Fetal heart-rate abnormalities","Maternal hypertension","Spina bifida and Down syndrome","Multiple gestations"],2),
+    q("Prenatal assessment","At what gestational age is amniocentesis typically performed?",["24 to 26 weeks","20 to 22 weeks","15 to 17 weeks","10 to 12 weeks"],2),
+    q("Pregnancy complications","What is characteristic of a complete hydatidiform mole?",["Both maternal and paternal genetic material","Fetal development with chromosomal abnormalities","No change in hCG levels","Fluid-filled cystic villi with no embryonic tissue"],3),
+    q("Pregnancy complications","Which surgical treatment may be chosen for a complete hydatidiform mole when the client desires no future fertility?",["Medication to initiate labour","Manual evacuation without surgery","Immediate uterine stitching","Hysterectomy"],3),
+    q("Pregnancy complications","Which complication is associated with hydatidiform moles?",["Placental abruption","Ectopic pregnancy","Gestational hypertension","Choriocarcinoma"],3),
+    q("Pregnancy complications","Which type of placenta previa completely covers the internal os of the cervix?",["Marginal placenta previa","Low-lying placentation","Complete or total placenta previa","Partial placenta previa"],2),
+    q("Pregnancy complications","In complete abruptio placentae, what type of external bleeding may be observed?",["Profuse bleeding","No visible bleeding","Minimal bleeding","Mild spotting"],1),
+    q("Prenatal assessment","What is the primary purpose of measuring fundal height during prenatal visits?",["Evaluate fetal heart rate","Assess fetal size and growth","Monitor maternal blood pressure","Screen for genetic abnormalities"],1),
+    q("Prenatal care","How often are prenatal visits usually scheduled from weeks 29 to 36?",["Every two weeks","Weekly","Monthly","Every three weeks"],0),
+    q("Prenatal assessment","When is fundal height expected to approximately match the number of weeks of gestation?",["Between weeks 8 and 12","Between weeks 18 and 30","After week 36","Throughout the third trimester"],1),
+    q("Pregnancy safety","Which is a psychological sign of intimate partner violence?",["Monitoring movements","Forced sexual intercourse","Physical injuries","Constant humiliation"],3),
+    q("Pregnancy risk","Which behavioural factor poses a risk to both the pregnant person and fetus?",["Positive family relationships","Healthy diet and exercise","Attending prenatal visits","Substance use"],3),
+    q("Pregnancy signs","Which is a probable sign of pregnancy that can be verified by a healthcare provider?",["Uterine enlargement","Nausea","Fatigue","Amenorrhea"],0),
+    q("Pregnancy signs","Which is classified as a positive sign of pregnancy?",["Breast changes","Urinary frequency","Fetal heart sounds","Quickening"],2),
+    q("Pregnancy signs","Which symptom is classified as a presumptive sign of pregnancy?",["Chadwick’s sign","Nausea","Uterine enlargement","Goodell’s sign"],1)
+  ];
+
+  let index=0,selected=null,checked=false,score=0;
+  const responses=[];
+  const $=id=>document.getElementById(id);
+  const letters=["A","B","C","D"];
+
+  function render(){
+    const item=questions[index]; selected=null; checked=false;
+    $("category").textContent=item.category;
+    $("counter").textContent=`Question ${index+1} of ${questions.length}`;
+    $("question").textContent=item.question;
+    $("answers").replaceChildren(...item.answers.map((answer,i)=>{
+      const b=document.createElement("button"); b.type="button"; b.className="option"; b.dataset.index=i;
+      b.innerHTML=`<span class="letter">${letters[i]}</span><span>${answer}</span>`;
+      b.addEventListener("click",()=>choose(i)); return b;
+    }));
+    $("feedback").className="feedback"; $("feedback").textContent="";
+    $("action").textContent="Check answer"; $("action").disabled=true;
+    $("progress").style.width=`${((index+1)/questions.length)*100}%`;
+  }
+  function choose(i){
+    if(checked)return; selected=i;
+    document.querySelectorAll(".option").forEach((el,n)=>el.classList.toggle("selected",n===i));
+    $("action").disabled=false;
+  }
+  function check(){
+    if(selected===null)return; checked=true; const item=questions[index]; const isRight=selected===item.correct;
+    if(isRight)score++;
+    responses.push({question:index,chosen:selected,correct:item.correct});
+    document.querySelectorAll(".option").forEach((el,n)=>{el.disabled=true;el.classList.remove("selected");if(n===item.correct)el.classList.add("correct");if(n===selected&&!isRight)el.classList.add("wrong")});
+    $("feedback").textContent=isRight?"Correct.":`Not quite. The correct answer is ${letters[item.correct]}: ${item.answers[item.correct]}.`;
+    $("feedback").className=`feedback show ${isRight?"good":"bad"}`;
+    $("action").textContent=index===questions.length-1?"See results":"Next question";
+    $("answered").textContent=`${responses.length} / ${questions.length}`; $("correct").textContent=score;
+  }
+  function advance(){if(!checked){check();return} if(index<questions.length-1){index++;render();window.scrollTo({top:0,behavior:"smooth"})}else finish()}
+  function finish(){
+    $("quizCard").style.display="none"; $("results").classList.add("show"); const pct=Math.round(score/questions.length*100);
+    $("finalScore").textContent=`${score} / ${questions.length}`;
+    $("resultNote").textContent=`You scored ${pct}%. ${pct>=80?"Strong review result. Revisit any missed items below.":"Review the missed items below, then restart when you are ready."}`;
+    const missed=responses.filter(r=>r.chosen!==r.correct);
+    $("review").replaceChildren(...(missed.length?missed.map(r=>{const item=questions[r.question],d=document.createElement("div");d.className="review-item";d.innerHTML=`<strong>${r.question+1}. ${item.question}</strong><br>Correct: ${letters[r.correct]}. ${item.answers[r.correct]}`;return d}):[Object.assign(document.createElement("div"),{className:"review-item",textContent:"Perfect score. No missed questions to review."})]));
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+  function restart(){index=0;selected=null;checked=false;score=0;responses.length=0;$("answered").textContent=`0 / ${questions.length}`;$("correct").textContent="0";$("results").classList.remove("show");$("quizCard").style.display="block";render()}
+  $("action").addEventListener("click",advance); $("restart").addEventListener("click",restart);
+  document.addEventListener("keydown",e=>{if($("quizCard").style.display==="none")return;if(!checked&&["1","2","3","4"].includes(e.key))choose(Number(e.key)-1);if(e.key==="Enter"&&!$("action").disabled)advance()});
+
+  if(document.modelContext?.registerTool){
+    const valid=n=>Number.isInteger(n)&&n>=1&&n<=4;
+    Promise.resolve(document.modelContext.registerTool({name:"answer_current_question",title:"Answer current question",description:"Select answer 1 through 4 for the visible question and check it.",inputSchema:{type:"object",properties:{answer:{type:"integer",minimum:1,maximum:4}},required:["answer"],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute({answer}){if(checked)throw new Error("The current question has already been checked.");if(!valid(answer))throw new Error("Answer must be an integer from 1 to 4.");choose(answer-1);check();return{question:index+1,correct:selected===questions[index].correct,score};}})).catch(()=>{});
+  }
+  render();
+  </script>
+</body>
+</html>
